@@ -1,5 +1,6 @@
 package common.pop;
 import common.market.MarsMarket;
+import common.product.ProductType;
 import lombok.Data;
 
 /**
@@ -19,17 +20,18 @@ public class Farmer {
 
     private double produceC = 0.5;
     private double consumableC = 0.3;
+    private double industrialC = 0.2;
+    private double production = 0;
 
 
-    public double work() {
+    public void work() {
         int number = pop.getNumber();
-        double production = number * efficiency;
+        production = number * efficiency;
 
-        return production;
+        MarsMarket.sellToMars(ProductType.PRODUCE,production);;
     }
 
 
     public void trade() {
-        MarsMarket.sellToMars();
     }
 }

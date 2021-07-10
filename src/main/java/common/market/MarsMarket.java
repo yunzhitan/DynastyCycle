@@ -1,5 +1,10 @@
 package common.market;
 
+import common.product.ProductType;
+import util.concurrent.NonBlockingHashMap;
+
+import java.util.Map;
+
 /**
  * 万能的火星市场，接受一切货物
  * @author Veritas
@@ -7,9 +12,9 @@ package common.market;
  */
 public class MarsMarket {
 
-    private volatile int i;
+    private volatile Map<ProductType,Double> map = new NonBlockingHashMap();
 
-    public static void sellToMars() {
-
+    public void sellToMars(ProductType productType, double production) {
+        map.put(productType,production);
     }
 }
